@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="60 seconds" debug="false">
+	
+	<property name="file.name" value="springbootdemo" />
+	<property name="log.path" value="/app" />
+	<property name="pattern" value="%d{yyyy-MM-dd HH:mm:ss.SSS} | %-5level | %thread | %logger{36}:%L | %M | %msg%n" />
+	
+	<!-- 打屏输出 -->
+	<appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>${pattern}</pattern>
+		</encoder>
+	</appender>
+	
+	<!-- 文件输出 -->
+	<appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.path}/logs/${file.name}.log</file>
+        
+		<rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+			<fileNamePattern>${log.dir}/logs/${file.name}.%d{yyyy-MM-dd}.%i.gz</fileNamePattern>
+			<maxFileSize>100MB</maxFileSize>
+			<totalSizeCap>5GB</totalSizeCap>
+			<maxHistory>30</maxHistory>
+		</rollingPolicy>
+		
+		<encoder>
+			<pattern>${pattern}</pattern>
+			<charset>UTF-8</charset>
+		</encoder>
+	</appender>
+	
+	<!-- DEBUG 文件输出 -->
+    <appender name="debugFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.dir}/logs/${file.name}.debug.log</file>
+        
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${log.dir}/logs/${file.name}.debug.%d{yyyy-MM-dd}.%i.gz</fileNamePattern>
+            <maxFileSize>100MB</maxFileSize>
+            <totalSizeCap>3GB</totalSizeCap>
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+        
+        <encoder>
+            <pattern>${pattern}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+    
+    <appender name="ASYNC_ROLLING_FILE" class="ch.qos.logback.classic.AsyncAppender">
+    	<neverBlock>true</neverBlock>
+    	<queueSize>1024</queueSize>
+		<appender-ref ref="file" />
+	</appender>
+	
+	<logger name="com.cifi" level="info">
+		<appender-ref ref="ASYNC_ROLLING_FILE"/>
+	</logger>
+	
+	<root level="info">
+		<appender-ref ref="stdout"/>
+	</root>
+</configuration>

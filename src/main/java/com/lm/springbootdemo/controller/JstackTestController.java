@@ -14,9 +14,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/jstack")
 @Slf4j
 public class JstackTestController {
+    static A a = new A();
+    static B b = new B();
 
-    @RequestMapping(value="/test",method = RequestMethod.GET)
-    public void helloJenkins(){
+    @RequestMapping(value="/highCpu",method = RequestMethod.GET)
+    public void highCpu(){
 
         new Thread(null,()->{
             System.err.println("1..........");
@@ -44,4 +46,35 @@ public class JstackTestController {
         },"thread333333333").start();
 
     }
+
+    @RequestMapping(value="/deadLock",method = RequestMethod.GET)
+    public void deadLock() throws InterruptedException {
+
+
+       new Thread(()->{
+           synchronized (a){
+               try {
+                   Thread.sleep(2000);
+               }catch (InterruptedException e){
+                   e.printStackTrace();
+               }
+               synchronized (b){
+                   System.err.println("获得了 a 和 b");
+               }
+           }
+       }).start();
+
+       Thread.sleep(1000);
+
+       new Thread(()->{
+           synchronized (b){
+               synchronized (a){
+                   System.err.println("获得的a和b");
+               }
+           }
+       }).start();
+
+    }
 }
+class  A{};
+class  B{};

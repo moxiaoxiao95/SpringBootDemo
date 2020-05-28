@@ -10,4 +10,20 @@ class SpringbootdemoApplicationTests {
     void contextLoads() {
     }
 
+    private static int count;
+
+//    public static void main(String[] args) {
+//        try{
+//            method();
+//        }catch (Throwable e){
+//            e.printStackTrace();
+//            System.err.println(e.getMessage());
+//            System.err.println(count);
+//        }
+//    }
+//    private static void method(){
+//        count++;
+//        method();
+//    }
+
 }

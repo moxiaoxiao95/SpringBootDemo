@@ -5,6 +5,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author liming
  * <p>
@@ -74,6 +77,23 @@ public class JstackTestController {
            }
        }).start();
 
+    }
+
+    @RequestMapping(value="/heapOut",method = RequestMethod.GET)
+    public void heapOut(){
+        int i =0;
+        try{
+            List<String>list = new ArrayList<>();
+            String a = "hello";
+            while(true){
+                list.add(a);
+                a= a+a;
+                i++;
+            }
+        }catch (Throwable e){
+            e.printStackTrace();
+            System.out.println(i);
+        }
     }
 }
 class  A{};

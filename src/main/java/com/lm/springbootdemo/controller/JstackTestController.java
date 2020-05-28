@@ -62,7 +62,7 @@ public class JstackTestController {
                    e.printStackTrace();
                }
                synchronized (b){
-                   System.err.println("获得了 a 和 b");
+                   log.info("获得了 a 和 b");
                }
            }
        }).start();
@@ -72,7 +72,7 @@ public class JstackTestController {
        new Thread(()->{
            synchronized (b){
                synchronized (a){
-                   System.err.println("获得的a和b");
+                   log.info("获得了 a 和 b");
                }
            }
        }).start();

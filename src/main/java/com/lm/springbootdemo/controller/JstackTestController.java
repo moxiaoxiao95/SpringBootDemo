@@ -92,6 +92,7 @@ public class JstackTestController {
             }
         }catch (Throwable e){
             e.printStackTrace();
+            log.error("出错了"+e);
             log.info("=============================运行次数"+i);
         }
     }

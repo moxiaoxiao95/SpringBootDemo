@@ -46,15 +46,15 @@
         </encoder>
     </appender>
     
-    <appender name="ASYNC_ROLLING_FILE" class="ch.qos.logback.classic.AsyncAppender">
-    	<neverBlock>true</neverBlock>
-    	<queueSize>1024</queueSize>
-		<appender-ref ref="file" />
-	</appender>
-	
-	<logger name="com.lm" level="info">
-		<appender-ref ref="ASYNC_ROLLING_FILE"/>
-	</logger>
+    <!--<appender name="ASYNC_ROLLING_FILE" class="ch.qos.logback.classic.AsyncAppender">-->
+    	<!--<neverBlock>true</neverBlock>-->
+    	<!--<queueSize>1024</queueSize>-->
+		<!--<appender-ref ref="file" />-->
+	<!--</appender>-->
+	<!---->
+	<!--<logger name="com.lm" level="info">-->
+		<!--<appender-ref ref="ASYNC_ROLLING_FILE"/>-->
+	<!--</logger>-->
 	
 	<root level="INFO">
 		<appender-ref ref="stdout"/>

@@ -24,14 +24,14 @@ public class JstackTestController {
     public void highCpu(){
 
         new Thread(null,()->{
-            System.err.println("1..........");
+            log.info("1..........");
             while (true){
 
             }
         },"thread1111111111").start();
 
         new Thread(null,()->{
-            System.err.println("2..........");
+            log.info("2..........");
             try {
                 Thread.sleep(1000000L);
             }catch (InterruptedException e){
@@ -40,7 +40,7 @@ public class JstackTestController {
         },"thread222222222").start();
 
         new Thread(null,()->{
-            System.err.println("3..........");
+            log.info("3..........");
             try{
                 Thread.sleep(1000000L);
             }catch (InterruptedException e){
@@ -92,7 +92,7 @@ public class JstackTestController {
             }
         }catch (Throwable e){
             e.printStackTrace();
-            System.out.println(i);
+            log.info("=============================运行次数"+i);
         }
     }
 }

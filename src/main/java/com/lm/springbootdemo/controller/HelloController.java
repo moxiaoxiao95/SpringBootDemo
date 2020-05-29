@@ -18,6 +18,9 @@ public class HelloController {
     @RequestMapping(value="/jenkins",method = RequestMethod.GET)
     public String helloJenkins(){
 
+        log.info("======================info======================");
+        log.debug("=====================debug=====================");
+        log.error("=====================error=====================");
         return "hello jenkins!!!!";
     }
 }

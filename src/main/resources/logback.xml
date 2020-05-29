@@ -17,7 +17,7 @@
         <file>${log.path}/logs/${file.name}.log</file>
         
 		<rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
-			<fileNamePattern>${log.dir}/logs/${file.name}.%d{yyyy-MM-dd}.%i.gz</fileNamePattern>
+			<fileNamePattern>${log.path}/logs/${file.name}.%d{yyyy-MM-dd}.%i.gz</fileNamePattern>
 			<maxFileSize>100MB</maxFileSize>
 			<totalSizeCap>5GB</totalSizeCap>
 			<maxHistory>30</maxHistory>
@@ -31,10 +31,10 @@
 	
 	<!-- DEBUG 文件输出 -->
     <appender name="debugFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>${log.dir}/logs/${file.name}.debug.log</file>
+        <file>${log.path}/logs/${file.name}.debug.log</file>
         
         <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
-            <fileNamePattern>${log.dir}/logs/${file.name}.debug.%d{yyyy-MM-dd}.%i.gz</fileNamePattern>
+            <fileNamePattern>${log.path}/logs/${file.name}.debug.%d{yyyy-MM-dd}.%i.gz</fileNamePattern>
             <maxFileSize>100MB</maxFileSize>
             <totalSizeCap>3GB</totalSizeCap>
             <maxHistory>7</maxHistory>

@@ -52,7 +52,7 @@
 		<appender-ref ref="file" />
 	</appender>
 	
-	<logger name="com.cifi" level="info">
+	<logger name="com.lm" level="info">
 		<appender-ref ref="ASYNC_ROLLING_FILE"/>
 	</logger>
 	

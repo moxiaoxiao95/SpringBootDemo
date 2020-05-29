@@ -56,7 +56,8 @@
 		<appender-ref ref="ASYNC_ROLLING_FILE"/>
 	</logger>
 	
-	<root level="info">
+	<root level="DEBUG">
 		<appender-ref ref="stdout"/>
+		<appender-ref ref="file"/>
 	</root>
 </configuration>

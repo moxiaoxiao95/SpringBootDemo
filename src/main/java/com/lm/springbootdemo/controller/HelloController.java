@@ -21,6 +21,6 @@ public class HelloController {
         log.info("======================info======================");
         log.debug("=====================debug=====================");
         log.error("=====================error=====================");
-        return "hello jenkins!!!!";
+        return "hello jenkins123!!!!";
     }
 }
